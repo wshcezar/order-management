@@ -3,10 +3,3 @@
 *.iws
 *.iml
 *.ipr
-
-ELP.md
-order-service-api/target/
-partner-service-api/target/
-!.mvn/wrapper/maven-wrapper.jar
-!**/src/main/**/target/
-!**/src/test/**/target/

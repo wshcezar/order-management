@@ -1,13 +1,18 @@
 version: '3.8'
+
 services:
   postgres:
-    image: postgres:14
-    environment:
-      POSTGRES_USER: admin
-      POSTGRES_PASSWORD: admin
-      POSTGRES_DB: orders
+    build: ./infra/postgres
     ports:
       - "5432:5432"
+    networks:
+      - app-network
+
+  rabbitmq:
+    build: ./infra/rabbitmq
+    ports:
+      - "5672:5672"     # Porta padrão do RabbitMQ
+      - "15672:15672"   # Porta do painel de administração
     networks:
       - app-network
 
@@ -17,17 +22,19 @@ services:
       - "8081:8080"
     depends_on:
       - postgres
+      - rabbitmq
     networks:
       - app-network
 
-  order-service-api:
-    build: ./order-service-api
-    ports:
-      - "8082:8080"
-    depends_on:
-      - postgres
-    networks:
-      - app-network
+  # order-service-api:
+  #   build: ./order-service-api
+  #   ports:
+  #     - "8082:8080"
+  #   depends_on:
+  #     - postgres
+  #     - rabbitmq
+  #   networks:
+  #     - app-network
 
 networks:
   app-network:
