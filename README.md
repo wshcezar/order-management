@@ -3,6 +3,9 @@ Order management system with separate services for partners and orders.
 
 ## API Documentation
 
+### Solution
+![Design Solution](./docs/solution.png)
+
 ### Partner Service
 [![Partner Service API](https://img.shields.io/badge/OpenAPI-Partner-blue)](http://localhost:8081/swagger-ui/index.html)  
 [Partner Service Swagger UI](http://localhost:8081/swagger-ui/index.html)
@@ -29,8 +32,6 @@ password: guest
 username: admin
 password: admin
 ```
-
-
 
 ## Features
 
