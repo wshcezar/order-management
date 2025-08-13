@@ -39,7 +39,7 @@ class PartnerServiceTest {
         when(repository.findByName(request.name())).thenReturn(Optional.empty());
         when(repository.saveAndFlush(any(PartnerEntity.class))).thenReturn(savedEntity);
 
-        PartnerResponse response = service.createPartner(request);
+        PartnerResponse response = service.create(request);
 
         assertNotNull(response);
         assertEquals(request.name(), response.name());
@@ -53,7 +53,7 @@ class PartnerServiceTest {
         PartnerRequest request = new PartnerRequest("Partner A", BigDecimal.valueOf(100));
         when(repository.findByName(request.name())).thenReturn(Optional.of(new PartnerEntity(UUID.randomUUID())));
 
-        assertThrows(PartnerAlreadyExistsException.class, () -> service.createPartner(request));
+        assertThrows(PartnerAlreadyExistsException.class, () -> service.create(request));
         verify(repository).findByName(request.name());
         verify(repository, never()).saveAndFlush(any());
     }
@@ -66,7 +66,7 @@ class PartnerServiceTest {
 
         when(repository.findByUuid(uuid)).thenReturn(Optional.of(entity));
 
-        PartnerResponse response = service.getPartner(uuid);
+        PartnerResponse response = service.getById(uuid);
 
         assertNotNull(response);
         assertEquals(uuid, response.uuid());
@@ -79,7 +79,7 @@ class PartnerServiceTest {
         UUID uuid = UUID.randomUUID();
         when(repository.findByUuid(uuid)).thenReturn(Optional.empty());
 
-        assertThrows(PartnerNotFoundException.class, () -> service.getPartner(uuid));
+        assertThrows(PartnerNotFoundException.class, () -> service.getById(uuid));
     }
 
     @Test
@@ -132,6 +132,6 @@ class PartnerServiceTest {
         UUID uuid = UUID.randomUUID();
         when(repository.findByUuid(uuid)).thenReturn(Optional.empty());
 
-        assertThrows(PartnerNotFoundException.class, () -> service.getPartner(uuid));
+        assertThrows(PartnerNotFoundException.class, () -> service.getById(uuid));
     }
 }

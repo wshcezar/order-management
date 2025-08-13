@@ -32,7 +32,7 @@ public interface PartnerEndpoint {
                             content = @Content)
             }
     )
-    ResponseEntity<PartnerResponse> createPartner(PartnerRequest request);
+    ResponseEntity<PartnerResponse> create(PartnerRequest request);
 
     @Operation(
             summary = "Get partner by ID",
@@ -44,7 +44,7 @@ public interface PartnerEndpoint {
                             content = @Content)
             }
     )
-    ResponseEntity<PartnerResponse> getPartner(UUID id);
+    ResponseEntity<PartnerResponse> getById(UUID id);
 
     @Operation(
             summary = "Add credit to partner",

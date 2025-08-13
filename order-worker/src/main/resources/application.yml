@@ -1,0 +1,17 @@
+spring:
+  application:
+    name: order-worker
+  rabbitmq:
+    host: rabbitmq
+    port: 5672
+    username: guest
+    password: guest
+
+order:
+  service:
+    url: http://order-service-api:8080/api/orders
+
+partner:
+  service:
+    url: http://partner-service-api:8080/api/partners
+

@@ -24,7 +24,7 @@ public class PartnerService {
     }
 
     @Transactional
-    public PartnerResponse createPartner(PartnerRequest request) {
+    public PartnerResponse create(PartnerRequest request) {
         repository.findByName(request.name())
                 .ifPresent(existing -> {
                     throw new PartnerAlreadyExistsException(request.name());
@@ -35,7 +35,7 @@ public class PartnerService {
     }
 
     @Transactional(readOnly = true)
-    public PartnerResponse getPartner(UUID uuid) {
+    public PartnerResponse getById(UUID uuid) {
         return toPartnerResponse(findPartnerByUuid(uuid));
     }
 

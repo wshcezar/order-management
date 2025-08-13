@@ -25,14 +25,14 @@ public class PartnerController implements PartnerEndpoint {
 
     @Override
     @PostMapping
-    public ResponseEntity<PartnerResponse> createPartner(@Valid @RequestBody PartnerRequest request) {
-        return new ResponseEntity<>(service.createPartner(request), HttpStatus.CREATED);
+    public ResponseEntity<PartnerResponse> create(@Valid @RequestBody PartnerRequest request) {
+        return new ResponseEntity<>(service.create(request), HttpStatus.CREATED);
     }
 
     @Override
     @GetMapping("/{id}")
-    public ResponseEntity<PartnerResponse> getPartner(@PathVariable UUID id) {
-        return new ResponseEntity<>(service.getPartner(id), HttpStatus.OK);
+    public ResponseEntity<PartnerResponse> getById(@PathVariable UUID id) {
+        return new ResponseEntity<>(service.getById(id), HttpStatus.OK);
     }
 
     @Override

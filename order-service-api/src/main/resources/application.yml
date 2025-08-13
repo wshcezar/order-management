@@ -1,0 +1,25 @@
+spring:
+  application:
+    name: order-service-api
+  rabbitmq:
+    host: rabbitmq
+    port: 5672
+    username: guest
+    password: guest
+  datasource:
+    #url: jdbc:postgresql://localhost:5432/orders
+    url: jdbc:postgresql://postgres:5432/orders
+    username: admin
+    password: admin
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+
+partner:
+  service:
+    url: http://partner-service-api:8080/api/partners
